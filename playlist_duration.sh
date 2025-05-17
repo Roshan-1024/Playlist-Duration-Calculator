@@ -1,13 +1,15 @@
 #!/bin/bash
 
-API_KEY=""
+# Load API key from .secrets file
+source .secrets
+API_KEY="$YOUTUBE_API_KEY"
 
 # In case the Playlist URL is not passed, print the Usage
 if [ -z "$1" ]; then
     echo "Usage: $0 <playlist URL>"
     exit 1
 fi
-
+echo "Using API_KEY=$API_KEY"
 
 # Example URL: https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb
 URL="$1"
