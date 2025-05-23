@@ -9,7 +9,6 @@ if [ -z "$1" ]; then
     echo "Usage: $0 <playlist URL>"
     exit 1
 fi
-echo "Using API_KEY=$API_KEY"
 
 # Example URL: https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb
 URL="$1"
@@ -62,9 +61,9 @@ while true; do
         break
     fi
 done
-
-HOURS=$((TOTAL_DURATION_IN_SECS / 3600))
-MINUTES=$(( (TOTAL_DURATION_IN_SECS % 3600) / 60 ))
+DAYS=$((TOTAL_DURATION_IN_SECS / 86400))
+HOURS=$(((TOTAL_DURATION_IN_SECS % 86400) / 3600))
+MINUTES=$(( (TOTAL_DURATION_IN_SECS % 3600) / 60))
 SECONDS=$((TOTAL_DURATION_IN_SECS % 60))
-echo "Total Duration: $HOURS : $MINUTES : $SECONDS"
+echo "Total Duration: $DAYS : $HOURS : $MINUTES : $SECONDS"
 
